@@ -9,12 +9,12 @@ import {Button} from "./Button";
 import {useState} from "react";
 export function App() {
     let {dateSaisonActuel, depuisCurrent} = getCurrentSeason()
-    let {dateSaisonSuivante, depuisNext} = getNextSeason()
+    let {dateSaisonSuivante, depuisNext, duree} = getNextSeason()
     const [open, setOpen] = useState(false)
     const onClick = () => setOpen(!open)
     return <div className={'App'}>
         <Card name={dateSaisonActuel.name} depuis={depuisCurrent} />
-        <Modal open={open} setOpen={setOpen}><Card name={dateSaisonSuivante.name} depuis={depuisNext} />
+        <Modal open={open} setOpen={setOpen}><Card name={dateSaisonSuivante.name} depuis={depuisNext} duree={duree} />
         </Modal>
         <div className={'Button'}>
             <Button onClick={onClick}>Afficher la saison suivante</Button>

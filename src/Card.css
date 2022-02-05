@@ -35,6 +35,13 @@ img {
     border-radius: 1em;
     font-size: 2.75rem;
 }
+.tag-sm {
+    align-self: center;
+    padding: .15em .5em;
+    border-radius: 0.5em;
+    font-size: 1.2rem;
+}
+
 
 .tag + .tag {
     margin-left: .5em;

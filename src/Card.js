@@ -3,7 +3,8 @@ import Hiver from "../public/images/Hiver.jpg"
 import Automne from "../public/images/Automne.jpg"
 import Ete from "../public/images/Ete.jpg"
 import Printemps from "../public/images/Printemps.jpg"
-export function Card({name, depuis}){
+let pluralize = require('pluralize')
+export function Card({name, depuis, duree = null}){
     const getImage = (name) => {
         switch(name){
             case "Hiver":
@@ -23,6 +24,7 @@ export function Card({name, depuis}){
         </div>
         <div className="card__body">
             <span className="tag tag-blue">{name}</span>
+            {duree && <span className="tag-sm tag-brown ">{pluralize('jour', Math.abs(duree), true)} </span>}
             <h4 className={'text-center'}>{depuis}</h4>
         </div>
     </div>

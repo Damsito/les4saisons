@@ -3,13 +3,13 @@ import {differenceInMonths, formatDistanceToNow} from "date-fns";
 import fr from "date-fns/locale/fr";
 
 export default function getCurrentSeason(){
-    let resulat = null
+    let lastResultat = null
     let dateSaisonActuel = null
     let now = new Date()
     dates.map(d => {
         let result = differenceInMonths(now, d.value)
-        if(!result || result > resulat){
-            resulat = result
+        if(!result || result > lastResultat){
+            lastResultat = result
             dateSaisonActuel = d
         }
     })
