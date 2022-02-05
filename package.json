@@ -2,7 +2,7 @@
   "name": "les4saisons",
   "version": "0.0.1",
   "description": "",
-  "source": "src/index.html",
+  "source": "public/index.html",
   "scripts": {
     "start": "parcel",
     "build": "parcel build"
@@ -11,11 +11,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@headlessui/react": "^1.4.3",
+    "@heroicons/react": "^1.0.5",
     "date-fns": "^2.28.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "parcel": "^2.2.1"
+    "autoprefixer": "^10.4.2",
+    "parcel": "^2.2.1",
+    "postcss": "^8.4.6",
+    "tailwindcss": "^3.0.18"
   }
 }
