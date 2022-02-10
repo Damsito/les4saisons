@@ -3,8 +3,8 @@ import {compareAsc, differenceInCalendarDays, formatDistanceToNow} from "date-fn
 import fr from "date-fns/locale/fr";
 import getCurrentSeason from "./getCurrentSeason";
 
-export default function getNextSeason(){
-    let {dateSaisonActuel} = getCurrentSeason()
+export default function getCurrentAndNextSeason(){
+    let {dateSaisonActuel, depuisCurrent} = getCurrentSeason()
     let datesValue = dates.map(d => { return d.value})
     let sortedDates = datesValue.sort(compareAsc)
 
@@ -28,5 +28,5 @@ export default function getNextSeason(){
         next,
         nextNext
     )
-    return {dateSaisonSuivante, depuisNext, duree}
+    return {dateSaisonSuivante, depuisNext, duree, dateSaisonActuel, depuisCurrent}
 }
