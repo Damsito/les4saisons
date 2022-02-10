@@ -3,10 +3,10 @@ import {Card} from "./Card";
 import Modal from "./Modal";
 import {Button} from "./Button";
 import {useState} from "react";
-import getCurrentSeason from "./getCurrentSeason";
+import getSeason from "./getSeason";
 
 export function App() {
-    let  {dateSaisonActuel, depuisCurrent, dateSaisonNext, depuisNext, dureeNext} = getCurrentSeason()
+    let  {dateSaisonActuel, depuisCurrent, dateSaisonNext, depuisNext, dureeNext} = getSeason()
     const [open, setOpen] = useState(false)
     const onClick = () => setOpen(!open)
     return <div className={'App'}>
