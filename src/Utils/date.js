@@ -1,10 +1,10 @@
 import {differenceInDays, formatDistanceToNow, getMonth, isWithinInterval} from "date-fns";
 import fr from "date-fns/locale/fr";
 import {dates} from "../dates";
-import Hiver from "../../public/images/Hiver.jpg";
-import Automne from "../../public/images/Automne.jpg";
-import Ete from "../../public/images/Ete.jpg";
-import Printemps from "../../public/images/Printemps.jpg";
+import Hiver from "../images/Hiver.jpg";
+import Automne from "../images/Automne.jpg";
+import Ete from "../images/Ete.jpg";
+import Printemps from "../images/Printemps.jpg";
 
 function getDate(date, year = null){
     return new Date(year ? year : (new Date()).getFullYear(), date.month, date.day)

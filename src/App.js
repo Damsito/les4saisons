@@ -5,6 +5,7 @@ import {useState} from "react";
 import Season from "./Season";
 import NextSeason from "./NextSeason";
 
+import React from "react";
 export function App() {
     const [open, setOpen] = useState(false)
     const onClick = () => setOpen(!open)

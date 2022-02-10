@@ -2,6 +2,7 @@ import pluralize from "pluralize";
 import {getImage} from "./Utils/date";
 import './Card.css'
 import {getSeasonSuivante} from "./getSeason";
+import React from "react";
 
 function NextSeason(){
     const { dateSaisonNext, depuisNext, dureeNext} = getSeasonSuivante()
