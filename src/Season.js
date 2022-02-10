@@ -1,4 +1,6 @@
 import {getImage} from "./Utils/date";
+
+import React from "react";
 import './Card.css'
 import {getSeasonActuel} from "./getSeason";
 function Season(){
