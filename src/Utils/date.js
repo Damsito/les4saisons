@@ -1,6 +1,10 @@
 import {differenceInDays, formatDistanceToNow, getMonth, isWithinInterval} from "date-fns";
 import fr from "date-fns/locale/fr";
 import {dates} from "../dates";
+import Hiver from "../../public/images/Hiver.jpg";
+import Automne from "../../public/images/Automne.jpg";
+import Ete from "../../public/images/Ete.jpg";
+import Printemps from "../../public/images/Printemps.jpg";
 
 function getDate(date, year = null){
     return new Date(year ? year : (new Date()).getFullYear(), date.month, date.day)
@@ -11,10 +15,13 @@ export function getDureeNextSeason(dateSaisonNext){
         getDate(dateSaisonNext.fin)
     )
 }
-export function getDepuisDate(dateSaisonActuel, dateSaisonNext){
+export function getDepuisCurrent(dateSaisonActuel){
     const depuisCurrent = formatDistanceToNowCustom(dateSaisonActuel)
+    return {depuisCurrent}
+}
+export function getDepuisSuivante( dateSaisonNext){
     const depuisNext = formatDistanceToNowCustom(dateSaisonNext)
-    return {depuisCurrent, depuisNext}
+    return { depuisNext}
 }
 export function formatDistanceToNowCustom(date){
     let newDate = getDate(date.debut)
@@ -50,4 +57,17 @@ export function getSeasonDateAndNextSeasonDate() {
         return d.season === dateSaisonActuel.next
     })[0]
     return {dateSaisonActuel, dateSaisonNext}
+}
+
+export const getImage = (name) => {
+    switch(name){
+        case "Hiver":
+            return Hiver
+        case "Automne":
+            return Automne
+        case "Ete":
+            return Ete
+        case "Printemps":
+            return Printemps
+    }
 }

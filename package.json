@@ -5,7 +5,8 @@
   "source": "public/index.html",
   "scripts": {
     "start": "parcel",
-    "build": "rimraf dist && parcel build"
+    "build": "rimraf dist && parcel build",
+    "test": "jest "
   },
   "keywords": [],
   "author": "",
@@ -17,11 +18,12 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
+    "@parcel/reporter-bundle-analyzer": "^2.3.0",
     "autoprefixer": "^10.4.2",
-    "parcel": "^2.2.1",
+    "parcel": "^2.3.0",
     "postcss": "^8.4.6",
+    "rimraf": "^3.0.2",
     "tailwindcss": "^3.0.18",
-    "@parcel/reporter-bundle-analyzer": "^2.0.0-nightly.2087",
-    "rimraf": "^3.0.2"
+    "jest": "^27.5.1"
   }
 }

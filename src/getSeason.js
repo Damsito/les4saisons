@@ -1,11 +1,18 @@
-import {getDepuisDate, getDureeNextSeason, getSeasonDateAndNextSeasonDate} from "./Utils/date";
+import {
+    getDepuisCurrent,
+    getDepuisSuivante,
+    getDureeNextSeason,
+    getSeasonDateAndNextSeasonDate
+} from "./Utils/date";
 
-export default function getSeason(){
-    let {dateSaisonActuel, dateSaisonNext} = getSeasonDateAndNextSeasonDate()
-
-    const {depuisCurrent, depuisNext} = getDepuisDate(dateSaisonActuel, dateSaisonNext)
-
+export function getSeasonActuel(){
+    let {dateSaisonActuel} = getSeasonDateAndNextSeasonDate()
+    const {depuisCurrent} = getDepuisCurrent(dateSaisonActuel)
+    return {dateSaisonActuel, depuisCurrent}
+}
+export function getSeasonSuivante(){
+    let {dateSaisonNext} = getSeasonDateAndNextSeasonDate()
+    const {depuisNext} = getDepuisSuivante(dateSaisonNext)
     const dureeNext = getDureeNextSeason(dateSaisonNext)
-
-    return {dateSaisonActuel, depuisCurrent, dateSaisonNext, depuisNext, dureeNext}
+    return { dateSaisonNext, depuisNext, dureeNext}
 }
