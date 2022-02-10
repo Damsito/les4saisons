@@ -5,14 +5,12 @@
   "source": "public/index.html",
   "scripts": {
     "start": "parcel",
-    "build": "parcel build"
+    "build": "rimraf dist && parcel build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@headlessui/react": "^1.4.3",
-    "@heroicons/react": "^1.0.5",
     "date-fns": "^2.28.0",
     "pluralize": "^8.0.0",
     "react": "^17.0.2",
@@ -22,6 +20,8 @@
     "autoprefixer": "^10.4.2",
     "parcel": "^2.2.1",
     "postcss": "^8.4.6",
-    "tailwindcss": "^3.0.18"
+    "tailwindcss": "^3.0.18",
+    "@parcel/reporter-bundle-analyzer": "^2.0.0-nightly.2087",
+    "rimraf": "^3.0.2"
   }
 }
