@@ -21,12 +21,12 @@ describe("Season", () => {
   });
 });
 
-describe("Season", () => {
+describe("Season_automne", () => {
   beforeAll(() => {
     jest.useFakeTimers("modern");
     jest.setSystemTime(new Date(2022, 11, 9));
   });
-  it("renders a text `il y a environ 3 mois`", () => {
+  it("renders a text `il y a 3 mois`", () => {
     render(<Season />);
     expect(screen.getByText("il y a 3 mois")).toBeInTheDocument();
   });

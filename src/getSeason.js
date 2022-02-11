@@ -1,11 +1,6 @@
 import {
-  DateUtils,
-  getDepuisCurrent,
-  getDepuisSuivante,
-  getDureeNextSeason,
-  getSeasonDateAndNextSeasonDate,
+  DateUtils
 } from "./Utils/DateUtils";
-import {dates} from "./dates";
 
 export function getSeasonActuel(dateProps) {
   let date = new DateUtils(dateProps);

@@ -25,12 +25,12 @@ describe("NextSeason", () => {
   });
 });
 
-describe("NextSeason december ", () => {
+describe("NextSeason_december", () => {
   beforeAll(() => {
     jest.useFakeTimers("modern");
     jest.setSystemTime(new Date(2022, 11, 9).valueOf());
   });
-  it("renders a text `dans environ 1 mois`", () => {
+  it("renders a text `dans 12 jours`", () => {
     render(<NextSeason />);
     expect(screen.getByText("dans 12 jours")).toBeInTheDocument();
   });
@@ -46,4 +46,3 @@ describe("NextSeason december ", () => {
     jest.useRealTimers();
   });
 });
-

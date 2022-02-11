@@ -1,8 +1,7 @@
-
 import React from "react";
 import "./Card.css";
 import { getSeasonActuel } from "./getSeason";
-import {getImage} from "./images/getImage";
+import { getImage } from "./images/getImage";
 function Season() {
   const { dateSaisonActuel, depuisCurrent } = getSeasonActuel(new Date());
   return (
