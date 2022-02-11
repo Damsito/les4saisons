@@ -1,11 +1,11 @@
 import pluralize from "pluralize";
-import { getImage } from "./Utils/date";
 import "./Card.css";
 import { getSeasonSuivante } from "./getSeason";
 import React from "react";
+import {getImage} from "./images/getImage";
 
 function NextSeason() {
-  const { dateSaisonNext, depuisNext, dureeNext } = getSeasonSuivante();
+    const { dateSaisonNext, depuisNext, dureeNext } = getSeasonSuivante(new Date());
   return (
     <div className="card">
       <div className="card__header">

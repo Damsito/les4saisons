@@ -6,7 +6,7 @@ import React from "react";
 describe("NextSeason", () => {
   beforeAll(() => {
     jest.useFakeTimers("modern");
-    jest.setSystemTime(new Date(2022, 1, 9));
+    jest.setSystemTime(new Date(2022, 1, 9).valueOf());
   });
   it("renders a text `dans environ 1 mois`", () => {
     render(<NextSeason />);
@@ -24,3 +24,26 @@ describe("NextSeason", () => {
     jest.useRealTimers();
   });
 });
+
+describe("NextSeason december ", () => {
+  beforeAll(() => {
+    jest.useFakeTimers("modern");
+    jest.setSystemTime(new Date(2022, 11, 9).valueOf());
+  });
+  it("renders a text `dans environ 1 mois`", () => {
+    render(<NextSeason />);
+    expect(screen.getByText("dans 12 jours")).toBeInTheDocument();
+  });
+  it("renders a text `Hiver`", () => {
+    render(<NextSeason />);
+    expect(screen.getByText("Hiver")).toBeInTheDocument();
+  });
+  it("renders a text `88 jours`", () => {
+    render(<NextSeason />);
+    expect(screen.getByText("88 jours")).toBeInTheDocument();
+  });
+  afterAll(() => {
+    jest.useRealTimers();
+  });
+});
+

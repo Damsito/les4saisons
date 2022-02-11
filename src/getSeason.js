@@ -1,18 +1,22 @@
 import {
+  DateUtils,
   getDepuisCurrent,
   getDepuisSuivante,
   getDureeNextSeason,
   getSeasonDateAndNextSeasonDate,
-} from "./Utils/date";
+} from "./Utils/DateUtils";
+import {dates} from "./dates";
 
-export function getSeasonActuel() {
-  let { dateSaisonActuel } = getSeasonDateAndNextSeasonDate();
-  const { depuisCurrent } = getDepuisCurrent(dateSaisonActuel);
+export function getSeasonActuel(dateProps) {
+  let date = new DateUtils(dateProps);
+  let { dateSaisonActuel } = date.getSeasonDateAndNextSeasonDate();
+  const { depuisCurrent } = date.getDepuisCurrent(dateSaisonActuel);
   return { dateSaisonActuel, depuisCurrent };
 }
-export function getSeasonSuivante() {
-  let { dateSaisonNext } = getSeasonDateAndNextSeasonDate();
-  const { depuisNext } = getDepuisSuivante(dateSaisonNext);
-  const dureeNext = getDureeNextSeason(dateSaisonNext);
+export function getSeasonSuivante(dateProps) {
+  let date = new DateUtils(dateProps);
+  let { dateSaisonNext } = date.getSeasonDateAndNextSeasonDate();
+  const { depuisNext } = date.getDepuisSuivante(dateSaisonNext);
+  const dureeNext = date.getDureeNextSeason(dateSaisonNext);
   return { dateSaisonNext, depuisNext, dureeNext };
 }
