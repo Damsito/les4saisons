@@ -2,8 +2,8 @@ import React from "react";
 import "./Card.css";
 import { getSeasonActuel } from "./getSeason";
 import { getImage } from "./images/getImage";
-function Season() {
-  const { dateSaisonActuel, depuisCurrent } = getSeasonActuel(new Date());
+function Season({ dateProps }) {
+  const { dateSaisonActuel, depuisCurrent } = getSeasonActuel(dateProps);
   return (
     <div className="card">
       <div className="card__header">

@@ -8,13 +8,13 @@ const NextSeason = lazy(() => import("./NextSeason"));
 export function App() {
   const [open, setOpen] = useState(false);
   const onClick = () => setOpen(!open);
-
+  let dateProps = new Date();
   return (
     <div className={"App"}>
-      <Season />
+      <Season dateProps={dateProps} />
       <Modal open={open} setOpen={setOpen}>
         <Suspense fallback={<div>Chargement...</div>}>
-          <NextSeason />
+          <NextSeason dateProps={dateProps} />
         </Suspense>
       </Modal>
       <div className="Button">

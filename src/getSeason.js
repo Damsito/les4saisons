@@ -1,6 +1,4 @@
-import {
-  DateUtils
-} from "./Utils/DateUtils";
+import { DateUtils } from "./Utils/DateUtils";
 
 export function getSeasonActuel(dateProps) {
   let date = new DateUtils(dateProps);

@@ -4,10 +4,9 @@ import { getSeasonSuivante } from "./getSeason";
 import React from "react";
 import { getImage } from "./images/getImage";
 
-function NextSeason() {
-  const { dateSaisonNext, depuisNext, dureeNext } = getSeasonSuivante(
-    new Date()
-  );
+function NextSeason({ dateProps }) {
+  const { dateSaisonNext, depuisNext, dureeNext } =
+    getSeasonSuivante(dateProps);
   return (
     <div className="card">
       <div className="card__header">
