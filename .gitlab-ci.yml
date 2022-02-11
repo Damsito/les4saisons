@@ -1,0 +1,14 @@
+stages:
+  - check
+lint:
+  stage: check
+  image: node:16
+  script:
+    - npm install --silent
+    - npm run lint
+test:
+  stage: check
+  image: node:16
+  script:
+    - npm install --silent
+    - npm run test
