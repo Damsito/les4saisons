@@ -1,6 +1,6 @@
 import {
   differenceInDays,
-  formatDistanceToNow,
+  formatDistance,
   getMonth,
   isWithinInterval,
 } from "date-fns";
@@ -11,14 +11,33 @@ import Automne from "../images/Automne.jpg";
 import Ete from "../images/Ete.jpg";
 import Printemps from "../images/Printemps.jpg";
 
+let dateInterval = new Date();
+console.log(dateInterval);
 function getDate(date, year = null) {
   return new Date(year ? year : new Date().getFullYear(), date.month, date.day);
 }
+function checkIfHiverInDecember(dateSaisonNext) {
+  if (dateSaisonNext.season === "Hiver" && getMonth(dateInterval) === 11) {
+    return getDate(dateSaisonNext.fin, new Date().getFullYear() + 1);
+  }
+  return null;
+}
+function checkIfHiverNotInDecember(dateSaisonNext) {
+  if (dateSaisonNext.season === "Hiver" && getMonth(dateInterval) !== 11) {
+    return getDate(dateSaisonNext.debut, new Date().getFullYear() - 1);
+  }
+  return null;
+}
 export function getDureeNextSeason(dateSaisonNext) {
-  return differenceInDays(
-    getDate(dateSaisonNext.debut),
-    getDate(dateSaisonNext.fin)
-  );
+  let dateDebut = checkIfHiverNotInDecember(dateSaisonNext);
+  if (!dateDebut) {
+    dateDebut = getDate(dateSaisonNext.debut);
+  }
+  let dateFin = checkIfHiverInDecember(dateSaisonNext);
+  if (!dateFin) {
+    dateFin = getDate(dateSaisonNext.fin);
+  }
+  return differenceInDays(dateDebut, dateFin);
 }
 export function getDepuisCurrent(dateSaisonActuel) {
   const depuisCurrent = formatDistanceToNowCustom(dateSaisonActuel);
@@ -29,30 +48,29 @@ export function getDepuisSuivante(dateSaisonNext) {
   return { depuisNext };
 }
 export function formatDistanceToNowCustom(date) {
-  let newDate = getDate(date.debut);
-  if (date.season === "Hiver") {
-    newDate = getDate(date.debut, new Date().getFullYear() - 1);
+  let newDate = checkIfHiverNotInDecember(date);
+  if (!newDate) {
+    newDate = getDate(date.debut);
   }
-  return formatDistanceToNow(newDate, {
+  return formatDistance(newDate, dateInterval, {
     locale: fr,
     addSuffix: true,
   });
 }
 export function getSeasonDateAndNextSeasonDate() {
-  let dateInterval = new Date();
   let dateSaisonActuel = dates.filter((d) => {
-    let dateDebut = getDate(d.debut);
-    let dateFin = getDate(d.fin);
-    if (d.season === "Hiver" && getMonth(dateInterval) !== 11) {
-      dateDebut = getDate(d.debut, new Date().getFullYear() - 1);
+    let dateDebut = checkIfHiverNotInDecember(d);
+    if (!dateDebut) {
+      dateDebut = getDate(d.debut);
     }
-    if (d.season === "Hiver" && getMonth(dateInterval) === 11) {
-      dateFin = getDate(d.fin, new Date().getFullYear() + 1);
+    let dateFin = checkIfHiverInDecember(d);
+    if (!dateFin) {
+      dateFin = getDate(d.fin);
     }
-      return isWithinInterval(dateInterval, {
-        start: dateDebut,
-        end: dateFin,
-      });
+    return isWithinInterval(dateInterval, {
+      start: dateDebut,
+      end: dateFin,
+    });
   })[0];
   let dateSaisonNext = dates.filter((d) => {
     return d.season === dateSaisonActuel.next;

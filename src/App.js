@@ -4,9 +4,11 @@ import { Button } from "./Button";
 import { lazy, useState, Suspense } from "react";
 import Season from "./Season";
 const NextSeason = lazy(() => import("./NextSeason"));
+
 export function App() {
   const [open, setOpen] = useState(false);
   const onClick = () => setOpen(!open);
+
   return (
     <div className={"App"}>
       <Season />
