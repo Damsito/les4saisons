@@ -2,8 +2,7 @@ import "./App.css";
 import React from "react";
 
 import Modal from "./Modal";
-import { Button } from "./Button";
-import { lazy, useState, Suspense } from "react";
+import { lazy, Suspense } from "react";
 import Season from "./Season";
 const NextSeason = lazy(() => import("./NextSeason"));
 
