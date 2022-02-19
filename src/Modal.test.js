@@ -1,10 +1,10 @@
 import React from "react";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 import Modal from "./Modal";
 
-describe(Modal.name, () => {
+describe("Modal", () => {
     it("renders a button with `Afficher la saison suivante` label", () => {
         render(<Modal />);
         expect(
