@@ -1,4 +1,6 @@
 import "./App.css";
+import React from "react";
+
 import Modal from "./Modal";
 import { Button } from "./Button";
 import { lazy, useState, Suspense } from "react";
@@ -6,20 +8,19 @@ import Season from "./Season";
 const NextSeason = lazy(() => import("./NextSeason"));
 
 export function App() {
-  const [open, setOpen] = useState(false);
-  const onClick = () => setOpen(!open);
   let dateProps = new Date();
   return (
     <div className={"App"}>
-      <Season dateProps={dateProps} />
-      <Modal open={open} setOpen={setOpen}>
-        <Suspense fallback={<div>Chargement...</div>}>
-          <NextSeason dateProps={dateProps} />
-        </Suspense>
-      </Modal>
-      <div className="Button">
-        <Button onClick={onClick}>Afficher la saison suivante</Button>
-      </div>
+        <div data-testid="content">
+          <Season dateProps={dateProps} />
+        </div>
+        <div data-testid="actions">
+          <Modal>
+            <Suspense fallback={<div>Chargement...</div>}>
+              <NextSeason dateProps={dateProps} />
+            </Suspense>
+          </Modal>
+        </div>
     </div>
   );
 }

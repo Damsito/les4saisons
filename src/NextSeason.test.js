@@ -3,46 +3,65 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import React from "react";
 
-describe("NextSeason", () => {
+describe("on january", () => {
   beforeAll(() => {
     jest.useFakeTimers("modern");
-    jest.setSystemTime(new Date(2022, 1, 9).valueOf());
+    jest.setSystemTime(new Date(2022, 0, 5));
   });
-  it("renders a text `dans environ 1 mois`", () => {
-    render(<NextSeason />);
-    expect(screen.getByText("dans environ 1 mois")).toBeInTheDocument();
-  });
-  it("renders a text `Printemps`", () => {
-    render(<NextSeason />);
+  it("returns spring season", () => {
+    render(<NextSeason dateProps={new Date()} />);
     expect(screen.getByText("Printemps")).toBeInTheDocument();
-  });
-  it("renders a text `92 jours`", () => {
-    render(<NextSeason />);
     expect(screen.getByText("92 jours")).toBeInTheDocument();
   });
   afterAll(() => {
     jest.useRealTimers();
   });
 });
-
-describe("NextSeason_december", () => {
+describe("on avril", () => {
   beforeAll(() => {
     jest.useFakeTimers("modern");
-    jest.setSystemTime(new Date(2022, 11, 9).valueOf());
+    jest.setSystemTime(new Date(2022, 3, 5));
   });
-  it("renders a text `dans 12 jours`", () => {
-    render(<NextSeason />);
-    expect(screen.getByText("dans 12 jours")).toBeInTheDocument();
-  });
-  it("renders a text `Hiver`", () => {
-    render(<NextSeason />);
-    expect(screen.getByText("Hiver")).toBeInTheDocument();
-  });
-  it("renders a text `88 jours`", () => {
-    render(<NextSeason />);
-    expect(screen.getByText("88 jours")).toBeInTheDocument();
+  it("returns spring season", () => {
+    render(<NextSeason dateProps={new Date()} />);
+    expect(screen.getByText("Ete")).toBeInTheDocument();
+    expect(screen.getByText("93 jours")).toBeInTheDocument();
+
   });
   afterAll(() => {
     jest.useRealTimers();
   });
 });
+
+describe("on july", () => {
+  beforeAll(() => {
+    jest.useFakeTimers("modern");
+    jest.setSystemTime(new Date(2022, 6, 1));
+  });
+  it("returns spring season", () => {
+    render(<NextSeason dateProps={new Date()} />);
+    expect(screen.getByText("Automne")).toBeInTheDocument();
+    expect(screen.getByText("88 jours")).toBeInTheDocument();
+
+  });
+  afterAll(() => {
+    jest.useRealTimers();
+  });
+});
+
+describe("on october", () => {
+  beforeAll(() => {
+    jest.useFakeTimers("modern");
+    jest.setSystemTime(new Date(2022, 9, 1));
+  });
+  it("returns spring season", () => {
+    render(<NextSeason dateProps={new Date()} />);
+    expect(screen.getByText("Hiver")).toBeInTheDocument();
+    expect(screen.getByText("88 jours")).toBeInTheDocument();
+
+  });
+  afterAll(() => {
+    jest.useRealTimers();
+  });
+});
+

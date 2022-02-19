@@ -1,8 +1,12 @@
 import { createPortal } from "react-dom";
+import React, {useState} from "react";
+import {Button} from "./Button";
 
 export default function Modal(props) {
   const node = document.getElementById("modal");
-  if (props.open) {
+  const [open, setOpen] = useState(false);
+  const onClick = () => setOpen(!open);
+  if (open) {
     return createPortal(
       <div className="inline-block transform overflow-hidden rounded-lg bg-white text-left align-bottom shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:align-middle">
         <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
@@ -16,15 +20,17 @@ export default function Modal(props) {
           <button
             type="button"
             className="inline-flex w-full justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
-            onClick={() => props.setOpen(false)}
+            onClick={() => setOpen(false)}
           >
             Cacher
           </button>
         </div>
       </div>,
-      node
+        node
     );
   } else {
-    return createPortal(<div></div>, node);
+    return  <div className="Button">
+      <Button onClick={onClick}>Afficher la saison suivante</Button>
+    </div>
   }
 }
